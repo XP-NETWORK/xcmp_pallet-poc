@@ -27,9 +27,10 @@ The Open Runtime Module Library (ORML) is a community maintained collection of S
 	- Provides scheduled balance locking mechanism, in a *graded vesting* way.
 - [orml-xcm-support](./xcm-support)
 	- Provides traits, types, and implementations to support XCM integration.
-- [orml-xtokens](./xtokens)
-	- Provides way to do cross-chain assets transfer.
-	- [Step-by-Step guide](https://github.com/open-web3-stack/open-runtime-module-library/wiki/xtokens) to make XCM cross-chain fungible asset transfer available on your parachain
+- [orml-xmessage](./xmessage)
+	- Provides way to do cross-chain message transfer.
+	- Will support XP Protocol Soon
+	- based on orml-xtokens
 
 ## Example
 
@@ -76,4 +77,4 @@ _In alphabetical order_
 - [Setheum Network](https://github.com/Setheum-Labs/Setheum)
 - [Valiu Liquidity Network](https://github.com/valibre-org/vln-node)
 - [Zeitgeist](https://github.com/zeitgeistpm/zeitgeist)
-
+- [XP-Network](https://github.com/xp-network)
