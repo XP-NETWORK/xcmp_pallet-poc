@@ -29,6 +29,7 @@ use sp_runtime::{
 	DispatchError,
 };
 use sp_std::prelude::*;
+use serde_xp_protocol::{XpProtocol, Flags};
 
 use xcm::v0::{
 	Junction::*,
@@ -107,7 +108,7 @@ pub mod module {
 
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
-		/// Transfer native currencies.
+		/// XpProtocol Serialization PoC
 		#[transactional]
 		#[pallet::weight(1000)]
 		pub fn transfer(
@@ -120,12 +121,16 @@ pub mod module {
 
 			let id: MultiLocation = T::CurrencyIdConvert::convert(currency_id.clone())
 				.ok_or(Error::<T>::NotCrossChainTransferableCurrency)?;
+
+            // topic_id, flags, message
+            let xp_data = XpProtocol::new(2314112141, Flags(0), &message);
+
 			let asset = MultiAsset::ConcreteNonFungible {
 				id,
-			    instance: AssetInstance::Blob(message),
+			    instance: AssetInstance::Blob(serde_xp_protocol::to_bytes(xp_data)),
 			};
 			Self::do_transfer_multiasset(who.clone(), asset, dest.clone())?;
-			Self::deposit_event(Event::<T>::Transferred(who, currency_id, amount, dest));
+			Self::deposit_event(Event::<T>::Message(who, currency_id, dest));
 			Ok(().into())
 		}
 	}

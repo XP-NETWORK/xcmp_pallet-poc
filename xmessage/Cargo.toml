@@ -24,6 +24,8 @@ xcm = { git = "https://github.com/paritytech/polkadot", branch = "statemint", de
 orml-xcm-support = { path = "../xcm-support", default-features = false }
 orml-traits = { path = "../traits", default-features = false}
 
+serde_xp_protocol = { git = "https://github.com/xp-network/serde_xp_protocol" }
+
 [dev-dependencies]
 sp-core = { git = "https://github.com/paritytech/substrate", branch = "statemint" }
 polkadot-core-primitives = { git = "https://github.com/paritytech/polkadot", branch = "statemint" }
